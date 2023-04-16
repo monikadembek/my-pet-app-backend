@@ -9,12 +9,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); 
+const __dirname = path.dirname(__filename);
 const viewsPath = __dirname + '/src/views';
 
 const corsOptions = {
   origin: 'http://localhost:4200'
-}
+};
 
 app.use(cors(corsOptions));
 app.use(express.static(viewsPath));
