@@ -5,16 +5,25 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node --esm ./src/server.ts",
+    "start:dev": "npx nodemon",
+    "build": "rimraf ./build && tsc",
+    "start:prod": "npm run build && node build/server.js"
   },
-  "author": "",
+  "author": "monika.dembek@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.11",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "typescript": "^5.0.4"
   }
 }
