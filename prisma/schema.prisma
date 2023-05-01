@@ -17,6 +17,7 @@ model User {
   email String @unique
   password String
   role Role @default(USER)
+  pets Pet[]
 }
 
 enum Role {
@@ -27,4 +28,34 @@ enum Role {
 model RefreshTokenStorage {
   id Int @id @default(autoincrement())
   token String @unique
+}
+
+model Pet {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId String
+  name String
+  birthdate DateTime?
+  gender String
+  species String
+  breed String?
+  colour String
+  hairType String?
+  distinguishingMarks String?
+  chipNumber String?
+  description String?
+  photoUrl String?
+  ownerAddress OwnerAddress[]
+}
+
+model OwnerAddress {
+  id Int @id @default(autoincrement())
+  address String
+  city String
+  zipCode String
+  country String
+  pet Pet @relation(fields: [petId], references: [id])
+  petId Int
 }
